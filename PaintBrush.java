@@ -1,14 +1,15 @@
-
+//Imported packages.
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Vector;
 
+//PaintBrush class definition.
 public class PaintBrush {
-    //Paint Brush Data members.
+    //Paint Brush class data members.
     private Graphics g;
     private boolean logCordinateElements;
 
-    //Paint Brush shot cordinate analytics vectors.
+    //Paint Brush data vectors for temporarily storing cordinate respective cordinate pairs.
     private Vector <Integer> xCordinateLog;
     private Vector <Integer> yCordinateLog;
 
@@ -25,7 +26,7 @@ public class PaintBrush {
         this.logCordinateElements = boolInput;
     }
 
-    //Log cordinate boolean setter.
+    //Log cordinate boolean getter.
     public boolean getLogCordinateStatus(){
         return this.logCordinateElements;
     }
@@ -54,7 +55,7 @@ public class PaintBrush {
         g.drawString("1", 830, 405);
     }
     
-    //Render target 100px marks for cordinate analysis./
+    //Draw target 100px marks for cordinate analysis xy-axis.
     public void drawAxisMarks(){
         g.setColor(Color.BLACK);
         int width = 2;
