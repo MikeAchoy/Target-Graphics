@@ -28,12 +28,12 @@ public class Analizer{
         this.yCordinate = yCordinateToSet;
     }
 
-    //Returns single x-cordinated.
+    //Returns single x-cordinate.
     public int getXCordinate(){
         return this.xCordinate;
     }
 
-     //Returns single y-cordinated.
+     //Returns single y-cordinate.
     public int getYCordinate(){
         return this.yCordinate;
     }
@@ -59,6 +59,7 @@ public class Analizer{
         System.out.println("Average cordinate: (" + averageXCordinate + ", " + averageYCordinate + ")");
     }
 
+    //Returns number of points hit based on location of shot cordinates.
     public int getNumberOfPoints(){
         //Declare data variables.
         int pointsHit = 0;
@@ -77,16 +78,30 @@ public class Analizer{
                 //Tests to determine where within the circle they land for points. 
                 //Center of circle (500, 400)
                 //using euqation of a circle (x - 500)^2 + (y - 400)^2 = r^2
-                //Test 10 points block.
+                //Test 10 point block.
                 if(((Math.pow(xCordinateSelected - 500, 2))+(Math.pow(yCordinateSelected - 400, 2))) <= (Math.pow(25, 2))){
                     pointsHit += 10;
                 } else{
-                    //Test for 5 points block.
+                    //Test for 5 point block.
                     if((((Math.pow(xCordinateSelected - 500, 2))+(Math.pow(yCordinateSelected - 400, 2))) <= (Math.pow(90, 2))) && (((Math.pow(xCordinateSelected - 500, 2))+(Math.pow(yCordinateSelected - 400, 2))) > (Math.pow(25, 2)))){
                         pointsHit += 5;
                     } else{
-                        if(){
+                        //Test for 4 point block.
+                        if(() && ()){
 
+                        } else{
+                            //Test for 2 point block.
+                            if(){
+
+                            } else{
+                                //Test for 1 point block.
+                                if(){
+
+                                } else{
+                                    // Add no points to pointsHit for shots out of all point bounds.
+                                    pointsHit += 0;
+                                }
+                            }
                         }
                     }
                 }
