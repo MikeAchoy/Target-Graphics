@@ -3,8 +3,9 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-//MyCanvas class definition.
+//MyCanvas canvas (JPanel) class definition.
 public class MyCanvas extends JPanel{
+    //MyCanvas default constructor.
     public MyCanvas(){
         setPreferredSize(new Dimension(1000, 800));
         setBackground(Color.white);
@@ -12,14 +13,18 @@ public class MyCanvas extends JPanel{
     //PaintComponent override class constructor.
     @Override
     protected void paintComponent(Graphics g){
-        //Initializers.
+        //Allows proper painting of graphics without issues. 
         super.paintComponent(g);
+        //Created instance of myBrush in order to draw to canvas object.
         PaintBrush myBrush = new PaintBrush(g, true);
-        //Brush Draw functions for drawing onto canvas.
-        //Center of target is (500, 400).
+        //myBrush Draw function calls for drawing onto canvas:
+        //Draws target onto canvas.
         myBrush.drawTarget();
+        //Draws axis marks onto canvas.
         myBrush.drawAxisMarks();
+        //Draws 20 random shots onto the canvas.
         myBrush.shootRandomShots(20);
+        //Prints labeled list of coordinates for the random shots drawn onto the canvas.
         myBrush.printCordinatesStacked();
     }
 }
