@@ -1,10 +1,11 @@
 import java.util.Vector;
 
+//Analizer class definition.
 public class Analizer{
-
+    //Class data members.
     private int xCordinate;
     private int yCordinate;
-
+    //Class data vector members.
     private Vector <Integer> xCordinateLog;
     private Vector <Integer> yCordinateLog;
 
@@ -73,21 +74,25 @@ public class Analizer{
         else{
             for(int i = 0; i < this.xCordinateLog.size(); i++){
                 //Get current index cordinate pair.
+                int sectorRadiusTested1;
+                int sectorRadiusTested2;
                 xCordinateSelected = this.xCordinateLog.get(i);
                 yCordinateSelected = this.yCordinateLog.get(i);
                 //Tests to determine where within the circle they land for points. 
                 //Center of circle (500, 400)
                 //using euqation of a circle (x - 500)^2 + (y - 400)^2 = r^2
                 //Test 10 point block.
-                if(((Math.pow(xCordinateSelected - 500, 2))+(Math.pow(yCordinateSelected - 400, 2))) <= (Math.pow(25, 2))){
+                sectorRadiusTested1 = 25;
+                if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2))) <= (Math.pow(sectorRadiusTested1, 2))){
                     pointsHit += 10;
                 } else{
                     //Test for 5 point block.
-                    if((((Math.pow(xCordinateSelected - 500, 2))+(Math.pow(yCordinateSelected - 400, 2))) <= (Math.pow(90, 2))) && (((Math.pow(xCordinateSelected - 500, 2))+(Math.pow(yCordinateSelected - 400, 2))) > (Math.pow(25, 2)))){
+                    sectorRadiusTested2 = 90;
+                    if((((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2))) <= (Math.pow(sectorRadiusTested2, 2))) && (((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2))) > (Math.pow(sectorRadiusTested1, 2)))){
                         pointsHit += 5;
                     } else{
                         //Test for 4 point block.
-                        if(() && ()){
+                        if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected, 2)) <= (Math.pow(a, 2))) && ((Math.pow(xCordinateSelected, 2)) + (Math.pow(yCordinateSelected, 2)) > (Math.pow(a, 2)))){
 
                         } else{
                             //Test for 2 point block.
