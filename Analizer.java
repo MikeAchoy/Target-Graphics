@@ -1,3 +1,5 @@
+//TODO: finish getNumberOfPoints() function.
+//Imported packages.
 import java.util.Vector;
 
 //Analizer class definition.
@@ -112,5 +114,6 @@ public class Analizer{
                 }
             }   
         }
+        return pointsHit;
     }
 }
