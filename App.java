@@ -1,17 +1,18 @@
+//Imported packages.
 import javax.swing.JFrame;
 
-//App class main function driver.
+//App class main function driver class.
 public class App {
     //Main function.
     public static void main(String [] args){
-        //Create new window and set default close operation.
+        //Create new JFrame and set default close operation.
         JFrame window = new JFrame("Random Shots");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create new canvas with orriden MyCanvas class.
         MyCanvas canvas = new MyCanvas();
 
-        //Add canvas elemenets to window and set functionality.
+        //Add MyCanvas element to window and set various functions.
         window.add(canvas);
         window.pack();
         window.setResizable(false);
