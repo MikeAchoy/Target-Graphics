@@ -61,6 +61,27 @@ public class Analizer{
         System.out.println("Average cordinate: (" + averageXCordinate + ", " + averageYCordinate + ")");
     }
 
+    //Prints the most accurate shots coordinates.
+    public void printMostAccurateCoordinateInSet(){
+        int xCoordinateSelected;
+        int yCoordinateSelected;
+        int originX = 500;
+        int originY = 400;
+        int closestX, closestY;
+        int  distanceFromOrigin;
+        int smallestDistance = Math.sqrt((Math.pow(xCoordinateSelected - originX, 2)) + (Math.pow(yCoordinateSelected - originY, 2)));;
+        for(int i = 0; i < this.xCordinateLog.size(); i++){
+            xCoordinateSelected = this.xCordinateLog.get(i);
+            yCoordinateSelected = this.yCordinateLog.get(i);
+            distanceFromOrigin = Math.sqrt((Math.pow(xCoordinateSelected - originX, 2)) + (Math.pow(yCoordinateSelected - originY, 2)));
+            if(distanceFromOrigin < smallestDistance){
+                smallestDistance = distanceFromOrigin;
+                closestX = xCoordinateSelected;
+                closestY = yCoordinateSelected;
+            }
+        }   
+    }
+
     //Returns number of points hit based on location of shot cordinates.
     public int getNumberOfPoints(){
         //Declare data variables.
@@ -81,8 +102,8 @@ public class Analizer{
                 xCordinateSelected = this.xCordinateLog.get(i);
                 yCordinateSelected = this.yCordinateLog.get(i);
 
-                //Tests to determine where within the circle they land for points. 
-                //Center of circle (500, 400) -> shifted xy-coordinates, and using euqation of a circle (x - 500)^2 + (y - 400)^2 = r^2
+                //Tests to determine where the shots landed within the target, using their coordinate logs.
+                //Center of target is at (500, 400) -> so xy-coordinates are shifted, using equation of a circle with center shifted (x - 500)^2 + (y - 400)^2 = r^2
                 //Test 10 point block.
                 sectorRadiusTested1 = 25;
                 if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2))) <= (Math.pow(sectorRadiusTested1, 2))){
@@ -103,7 +124,7 @@ public class Analizer{
                             if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) <= (Math.pow(sectorRadiusTested2, 2))) && ((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) > (Math.pow(sectorRadiusTested1, 2)))){
                                 pointsHit += 2;
                             } else{
-                                //Testa for 1 point block.
+                                //Test for 1 point block.
                                 sectorRadiusTested1 = 345;
                                 if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) <= (Math.pow(sectorRadiusTested1, 2))) && ((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) > (Math.pow(sectorRadiusTested2, 2)))){
                                     pointsHit += 1;
