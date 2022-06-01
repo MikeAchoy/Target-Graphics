@@ -36,7 +36,7 @@ public class Analizer{
         return this.xCordinate;
     }
 
-     //Returns single y-cordinate.
+    //Returns single y-cordinate.
     public int getYCordinate(){
         return this.yCordinate;
     }
