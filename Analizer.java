@@ -1,4 +1,3 @@
-//TODO: finish getNumberOfPoints() function.
 //Imported packages.
 import java.util.Vector;
 
