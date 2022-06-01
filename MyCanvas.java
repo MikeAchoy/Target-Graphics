@@ -23,8 +23,10 @@ public class MyCanvas extends JPanel{
         myBrush.drawTarget();
         //Draws axis marks onto canvas.
         myBrush.drawAxisMarks();
-        //Draws 20 random shots onto the canvas.
-        myBrush.shootRandomShots(20);
+
+        //Draws 20 random with analyzer shots onto the canvas.
+        myBrush.shootRandomShotsWAnalizer(20);
+
         //Prints labeled list of coordinates for the random shots drawn onto the canvas.
         myBrush.printCordinatesStacked();
     }

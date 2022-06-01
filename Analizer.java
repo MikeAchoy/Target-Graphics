@@ -75,14 +75,15 @@ public class Analizer{
         //If data vector sizes match do this.
         else{
             for(int i = 0; i < this.xCordinateLog.size(); i++){
-                //Get current index cordinate pair.
+                //Declare variables for xy-coordinates. 
                 int sectorRadiusTested1;
                 int sectorRadiusTested2;
+                //Get current index cordinate pair.
                 xCordinateSelected = this.xCordinateLog.get(i);
                 yCordinateSelected = this.yCordinateLog.get(i);
+
                 //Tests to determine where within the circle they land for points. 
-                //Center of circle (500, 400)
-                //using euqation of a circle (x - 500)^2 + (y - 400)^2 = r^2
+                //Center of circle (500, 400) -> shifted xy-coordinates, and using euqation of a circle (x - 500)^2 + (y - 400)^2 = r^2
                 //Test 10 point block.
                 sectorRadiusTested1 = 25;
                 if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2))) <= (Math.pow(sectorRadiusTested1, 2))){
@@ -94,19 +95,19 @@ public class Analizer{
                         pointsHit += 5;
                     } else{
                         //Test for 4 point block.
-                        if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected, 2)) <= (Math.pow(a, 2))) && ((Math.pow(xCordinateSelected, 2)) + (Math.pow(yCordinateSelected, 2)) > (Math.pow(a, 2)))){
-
+                        sectorRadiusTested1 = 175;
+                        if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) <= (Math.pow(sectorRadiusTested1, 2))) && ((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) > (Math.pow(sectorRadiusTested2, 2)))){
+                            pointsHit += 4;
                         } else{
                             //Test for 2 point block.
-                            if(){
-
+                            sectorRadiusTested2 = 275;
+                            if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) <= (Math.pow(sectorRadiusTested2, 2))) && ((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) > (Math.pow(sectorRadiusTested1, 2)))){
+                                pointsHit += 2;
                             } else{
-                                //Test for 1 point block.
-                                if(){
-
-                                } else{
-                                    // Add no points to pointsHit for shots out of all point bounds.
-                                    pointsHit += 0;
+                                //Testa for 1 point block.
+                                sectorRadiusTested1 = 345;
+                                if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) <= (Math.pow(sectorRadiusTested1, 2))) && ((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) > (Math.pow(sectorRadiusTested2, 2)))){
+                                    pointsHit += 1;
                                 }
                             }
                         }

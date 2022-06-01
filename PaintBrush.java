@@ -83,12 +83,43 @@ public class PaintBrush {
             drawShot();
         }
     }
+
+    //Draws random shots with analizer.
+    public void shootRandomShotsWAnalizer(int numberOfShots){
+        //Make log cordinates bool true to log cordinates to data vectors.
+        this.logCordinateElements = true;
+        //Loop drawing numberOfShots shots.
+        for(int i = 0; i < numberOfShots; i++){
+            drawShot();
+        }
+        //Instantiate new analizer object.
+        Analizer analizer = new Analizer();
+        //Init analizer data vectors with current data vector cordinate values.
+        analizer.setXCordinateLog(this.xCordinateLog);
+        analizer.setYCordinateLog(this.yCordinateLog);
+
+        //Do analitics with analizer here:
+        System.out.println("\nPoints hit: " + analizer.getNumberOfPoints() + "\n\n");
+    }
+
+    //Draws test shot with manual coordinate input.
+    public void testShots(){
+        drawShotWithCords(500, 400);
+
+        Analizer analizer = new Analizer();
+        //Init analizer data vectors with current data vector cordinate values.
+        analizer.setXCordinateLog(this.xCordinateLog);
+        analizer.setYCordinateLog(this.yCordinateLog);
+
+        //Do analitics with analizer here:
+        System.out.println("\nPoints hit: " + analizer.getNumberOfPoints() + "\n\n");
+    }
     
     //Draws shot based on random cordinates.
     public void drawShot(){
         int randomXCordinate = randomPointXCord();
         int randomYCordinate = randomPointYCord();
-        g.setColor(Color.GREEN);
+        g.setColor(Color.BLUE);
         fillRectCenterCords(randomXCordinate, randomYCordinate, 2, 10);
         fillRectCenterCords(randomXCordinate, randomYCordinate, 10, 2);
         //If analytic logs are enables push xy-cordinates to data vector.
@@ -100,9 +131,13 @@ public class PaintBrush {
     
     //Draws shot with specific cordinate points.
     public void drawShotWithCords(int x, int y){
-        g.setColor(Color.BLACK);
+        g.setColor(Color.BLUE);
         fillRectCenterCords(x, y, 3, 10);
         fillRectCenterCords(x, y, 10, 3);
+        if(this.logCordinateElements){
+            this.addXCordinateLog(x);
+            this.addYCordinateLog(y);
+        }
     }
 
     //Prints midpoint based on two cordinate points.
