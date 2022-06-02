@@ -199,7 +199,7 @@ public class PaintBrush {
     }
 
     //Prints and highlights shot coordinate pair closest to the center of the target.
-    public void printMostAccurateCoordinateInSet(){
+    public void cirlceMostAccurateCoordinateInSet(){
         int xCoordinateSelected;
         int yCoordinateSelected;
         int originX = 500;
@@ -219,7 +219,7 @@ public class PaintBrush {
                 closestY = yCoordinateSelected;
             }
         }  
-        System.out.println("Shortest Distance: (" + closestX + ", " + closestY + ")"); 
+        System.out.println("Shortest Distance Coordinate Pair: (" + closestX + ", " + closestY + ")\n"); 
         g.setColor(Color.GREEN);
         drawOvalCenterCords(closestX, closestY, 20, 20);
     }

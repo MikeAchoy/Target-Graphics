@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 public class App {
     //Main function.
     public static void main(String [] args){
+        //Calls startWindow to create window for canvas.
         startWindow();
     }
     
