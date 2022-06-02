@@ -30,7 +30,7 @@ public class MyCanvas extends JPanel{
         //Prints labeled list of coordinates for the random shots drawn onto the canvas.
         myBrush.printCordinatesStacked();
 
-        //Prints closest coordinate pair and circles closteste shot drawn on canvas.
+        //Prints closest coordinate pair and circles closest shot drawn on canvas.
         myBrush.printMostAccurateCoordinateInSet();
     }
 }
