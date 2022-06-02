@@ -61,15 +61,16 @@ public class Analizer{
         System.out.println("Average cordinate: (" + averageXCordinate + ", " + averageYCordinate + ")");
     }
 
-    //Prints the most accurate shots coordinates.
+    //Prints coordinate pair closest to the center of the target.
     public void printMostAccurateCoordinateInSet(){
         int xCoordinateSelected;
         int yCoordinateSelected;
         int originX = 500;
         int originY = 400;
-        int closestX, closestY;
-        int  distanceFromOrigin;
-        int smallestDistance = Math.sqrt((Math.pow(xCoordinateSelected - originX, 2)) + (Math.pow(yCoordinateSelected - originY, 2)));;
+        int closestX = this.xCordinateLog.get(0), closestY = this.yCordinateLog.get(0);
+        double  distanceFromOrigin;
+        double smallestDistance = Math.sqrt((Math.pow(this.xCordinateLog.get(0) - originX, 2)) + (Math.pow(this.yCordinateLog.get(0) - originY, 2)));
+        //Loop to get shortest coordinates with the shortest distance from the origin.
         for(int i = 0; i < this.xCordinateLog.size(); i++){
             xCoordinateSelected = this.xCordinateLog.get(i);
             yCoordinateSelected = this.yCordinateLog.get(i);
@@ -79,7 +80,8 @@ public class Analizer{
                 closestX = xCoordinateSelected;
                 closestY = yCoordinateSelected;
             }
-        }   
+        }  
+        System.out.println("Shortest Distance: (" + closestX + ", " + closestY + ")"); 
     }
 
     //Returns number of points hit based on location of shot cordinates.

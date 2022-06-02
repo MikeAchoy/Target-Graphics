@@ -198,6 +198,32 @@ public class PaintBrush {
         return cordinateAtIndex;
     }
 
+    //Prints and highlights shot coordinate pair closest to the center of the target.
+    public void printMostAccurateCoordinateInSet(){
+        int xCoordinateSelected;
+        int yCoordinateSelected;
+        int originX = 500;
+        int originY = 400;
+        int closestX = this.xCordinateLog.get(0);
+        int closestY = this.yCordinateLog.get(0);
+        double  distanceFromOrigin;
+        double smallestDistance = Math.sqrt((Math.pow(this.xCordinateLog.get(0) - originX, 2)) + (Math.pow(this.yCordinateLog.get(0) - originY, 2)));
+        //Loop to get shortest coordinates with the shortest distance from the origin.
+        for(int i = 0; i < this.xCordinateLog.size(); i++){
+            xCoordinateSelected = this.xCordinateLog.get(i);
+            yCoordinateSelected = this.yCordinateLog.get(i);
+            distanceFromOrigin = Math.sqrt((Math.pow(xCoordinateSelected - originX, 2)) + (Math.pow(yCoordinateSelected - originY, 2)));
+            if(distanceFromOrigin < smallestDistance){
+                smallestDistance = distanceFromOrigin;
+                closestX = xCoordinateSelected;
+                closestY = yCoordinateSelected;
+            }
+        }  
+        System.out.println("Shortest Distance: (" + closestX + ", " + closestY + ")"); 
+        g.setColor(Color.GREEN);
+        drawOvalCenterCords(closestX, closestY, 20, 20);
+    }
+
     //Prints all x-cordinate values in the xCordinateLog data vector.
     public void printXCordinates(){
         for (Integer xCordinate : xCordinateLog) {
