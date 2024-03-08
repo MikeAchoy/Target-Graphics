@@ -1,46 +1,46 @@
-//Imported packages.
+// Imported packages.
 import java.util.Vector;
 
-//Analizer class definition.
+// Analizer class definition.
 public class Analizer{
-    //Class data members.
+    // Class data members.
     private int xCordinate;
     private int yCordinate;
-    //Class data vector members.
+    // Class data vector members.
     private Vector <Integer> xCordinateLog;
     private Vector <Integer> yCordinateLog;
 
-    //Sets x-cordiante data vector.
+    // Sets x-cordiante data vector.
     public void setXCordinateLog(Vector <Integer> xCordinateLogToSet){
         this.xCordinateLog = xCordinateLogToSet;
     }
 
-    //Sets y-cordiante data vector.
+    // Sets y-cordiante data vector.
     public void setYCordinateLog(Vector <Integer> yCordinateLogToSet){
         this.yCordinateLog = yCordinateLogToSet;
     }
 
-    //Sets single x-cordinate.
+    // Sets single x-cordinate.
     public void setXCordinate(int xCordinateToSet){
         this.xCordinate = xCordinateToSet;
     }
 
-    //Sets single y-cordinate.
+    // Sets single y-cordinate.
     public void setYCordinate(int yCordinateToSet){
         this.yCordinate = yCordinateToSet;
     }
 
-    //Returns single x-cordinate.
+    // Returns single x-cordinate.
     public int getXCordinate(){
         return this.xCordinate;
     }
 
-    //Returns single y-cordinate.
+    // Returns single y-cordinate.
     public int getYCordinate(){
         return this.yCordinate;
     }
 
-    //Prints average cordinate position in rectangular cordinate format.
+    // Prints average cordinate position in rectangular cordinate format.
     public void printAverageCordinateValue(){
         float averageXCordinate;
         float averageYCordinate;
@@ -61,7 +61,7 @@ public class Analizer{
         System.out.println("Average cordinate: (" + averageXCordinate + ", " + averageYCordinate + ")");
     }
 
-    //Prints coordinate pair closest to the center of the target.
+    // Prints coordinate pair closest to the center of the target.
     public void printMostAccurateCoordinateInSet(){
         int xCoordinateSelected;
         int yCoordinateSelected;
@@ -70,7 +70,7 @@ public class Analizer{
         int closestX = this.xCordinateLog.get(0), closestY = this.yCordinateLog.get(0);
         double  distanceFromOrigin;
         double smallestDistance = Math.sqrt((Math.pow(this.xCordinateLog.get(0) - originX, 2)) + (Math.pow(this.yCordinateLog.get(0) - originY, 2)));
-        //Loop to get shortest coordinates with the shortest distance from the origin.
+        // Loop to get shortest coordinates with the shortest distance from the origin.
         for(int i = 0; i < this.xCordinateLog.size(); i++){
             xCoordinateSelected = this.xCordinateLog.get(i);
             yCoordinateSelected = this.yCordinateLog.get(i);
@@ -84,58 +84,48 @@ public class Analizer{
         System.out.println("Shortest Distance: (" + closestX + ", " + closestY + ")"); 
     }
 
-    //Returns number of points hit based on location of shot cordinates.
+    // Returns number of points hit based on location of shot cordinates.
     public int getNumberOfPoints(){
-        //Declare data variables.
+        // Declare data variables.
         int pointsHit = 0;
         int xCordinateSelected;
         int yCordinateSelected;
-        //Check if both data vector sizes match.
+        // Check if both data vector sizes match.
         if(this.xCordinateLog.size() != this.yCordinateLog.size()){
             System.out.println("ERROR: data vector sizes do not match.");
         }
-        //If data vector sizes match do this.
+        // If data vector sizes match do this.
         else{
-            for(int i = 0; i < this.xCordinateLog.size(); i++){
-                //Declare variables for xy-coordinates. 
-                int sectorRadiusTested1;
-                int sectorRadiusTested2;
-                //Get current index cordinate pair.
+            for (int i = 0; i < this.xCordinateLog.size(); i++) {
+                // Declare variables for xy-coordinates.
+                int sectorRadiusTested;
+                int pointsToAdd = 0;
+    
+                // Get current index coordinate pair.
                 xCordinateSelected = this.xCordinateLog.get(i);
                 yCordinateSelected = this.yCordinateLog.get(i);
 
-                //Tests to determine where the shots landed within the target, using their coordinate logs.
-                //Center of target is at (500, 400) -> so xy-coordinates are shifted, using equation of a circle with center shifted (x - 500)^2 + (y - 400)^2 = r^2
-                //Test 10 point block.
-                sectorRadiusTested1 = 25;
-                if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2))) <= (Math.pow(sectorRadiusTested1, 2))){
-                    pointsHit += 10;
-                } else{
-                    //Test for 5 point block.
-                    sectorRadiusTested2 = 90;
-                    if((((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2))) <= (Math.pow(sectorRadiusTested2, 2))) && (((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2))) > (Math.pow(sectorRadiusTested1, 2)))){
-                        pointsHit += 5;
-                    } else{
-                        //Test for 4 point block.
-                        sectorRadiusTested1 = 175;
-                        if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) <= (Math.pow(sectorRadiusTested1, 2))) && ((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) > (Math.pow(sectorRadiusTested2, 2)))){
-                            pointsHit += 4;
-                        } else{
-                            //Test for 2 point block.
-                            sectorRadiusTested2 = 275;
-                            if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) <= (Math.pow(sectorRadiusTested2, 2))) && ((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) > (Math.pow(sectorRadiusTested1, 2)))){
-                                pointsHit += 2;
-                            } else{
-                                //Test for 1 point block.
-                                sectorRadiusTested1 = 345;
-                                if(((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) <= (Math.pow(sectorRadiusTested1, 2))) && ((Math.pow(xCordinateSelected - 500, 2)) + (Math.pow(yCordinateSelected - 400, 2)) > (Math.pow(sectorRadiusTested2, 2)))){
-                                    pointsHit += 1;
-                                }
-                            }
-                        }
-                    }
+                // Determine the sector based on the condition
+                if ((Math.pow(xCordinateSelected - 500, 2) + Math.pow(yCordinateSelected - 400, 2)) <= Math.pow(25, 2)) {
+                    sectorRadiusTested = 25;
+                    pointsToAdd = 10;
+                } else if ((Math.pow(xCordinateSelected - 500, 2) + Math.pow(yCordinateSelected - 400, 2)) <= Math.pow(90, 2)) {
+                    sectorRadiusTested = 90;
+                    pointsToAdd = 5;
+                } else if ((Math.pow(xCordinateSelected - 500, 2) + Math.pow(yCordinateSelected - 400, 2)) <= Math.pow(175, 2)) {
+                    sectorRadiusTested = 175;
+                    pointsToAdd = 4;
+                } else if ((Math.pow(xCordinateSelected - 500, 2) + Math.pow(yCordinateSelected - 400, 2)) <= Math.pow(275, 2)) {
+                    sectorRadiusTested = 275;
+                    pointsToAdd = 2;
+                } else if ((Math.pow(xCordinateSelected - 500, 2) + Math.pow(yCordinateSelected - 400, 2)) <= Math.pow(345, 2)) {
+                    sectorRadiusTested = 345;
+                    pointsToAdd = 1;
                 }
-            }   
+
+                // Add points based on the sector
+                pointsHit += pointsToAdd;
+            } 
         }
         return pointsHit;
     }
